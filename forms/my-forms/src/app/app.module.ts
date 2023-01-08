@@ -4,10 +4,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveForm } from './components/reactive-form/reactive-form';
+import { TemplateDrivenForm } from './components/template-driven-form/template-driven-form';
 import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [AppComponent, ReactiveForm],
+  declarations: [AppComponent, ReactiveForm, TemplateDrivenForm],
   imports: [
     CommonModule,
     BrowserModule,
