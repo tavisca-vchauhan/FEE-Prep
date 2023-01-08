@@ -1,0 +1,53 @@
+<form [formGroup]="studentForm" (ngSubmit)="onSubmit()" >
+    <div class="student-form">
+        <h3> Name</h3>
+        <div class="label">
+            <label>*FirstName :</label>
+            <input type="text" formControlName="firstName" required minlength="4">
+            <label>LastName :</label>
+            <input type="text" formControlName="lastName" required>
+        </div>
+        <!-- adding validation error message template for firstName-->
+        <div *ngIf="firstName && firstName.invalid">
+            <p *ngIf="firstName && firstName.errors?.['required'] && firstName.touched" class="error-message">First name is
+                required</p>
+            <p *ngIf="firstName?.errors?.['minlength']" class="error-message">Minimum 4 characters are required</p>
+        </div>
+
+        <!-- for nested formGroup we need to add formGroupName-->
+        <div formGroupName="address" >     
+            <h3> Address</h3>
+            <label>*Street :</label>
+            <input type="text" formControlName="street" required>
+            <label>City :</label>
+            <input type="text" formControlName="city">
+            <label>*State :</label>
+            <input type="text" formControlName="state" required>
+            <label>*Pincode :</label>
+            <input type="text" formControlName="pincode" required>
+        </div>
+        <div class="address-errors">
+            <p *ngIf="street && street.errors?.['required'] && street.touched" class="error-message-street">Street is required</p>
+            <p *ngIf="state && state.errors?.['required'] && state.touched" class="error-message-state">State is required</p>
+            <p *ngIf="pincode && pincode.errors?.['required'] && pincode.touched" class="error-message-pincode">Pincode is required</p>
+        </div>
+        <h3> Email</h3>
+        <label>*email :</label>
+        <input type="text" formControlName="email" email>
+        <p *ngIf="email && email.errors?.['email'] && email.touched" class="error-message">Email is invalid</p>
+
+
+        <!-- for nested formGroup we need to add formGroupName-->
+        <div formGroupName="contactInfo">
+            <h3>Contact Info</h3>
+            <label>*PrimaryPhone :</label>
+            <input type="text" formControlName="primaryPhone" required>
+            <p *ngIf="primaryPhone && primaryPhone.errors?.['required'] && primaryPhone.touched" class="error-message">PrimaryPhone is required</p>
+            <label>SecondaryPhone :</label>
+            <input type="text" formControlName="secondaryPhone">
+        </div>
+
+        
+    </div>
+    <button type="submit" class="submit-button">Submit</button>
+</form> 
