@@ -5,7 +5,7 @@
             <label>*FirstName :</label>
             <input type="text" formControlName="firstName" required minlength="4">
             <label>LastName :</label>
-            <input type="text" formControlName="lastName" required>
+            <input type="text" formControlName="lastName">
         </div>
         <!-- adding validation error message template for firstName-->
         <div *ngIf="firstName && firstName.invalid">
@@ -33,7 +33,7 @@
         </div>
         <h3> Email</h3>
         <label>*email :</label>
-        <input type="text" formControlName="email" email>
+        <input type="text" formControlName="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$">
         <p *ngIf="email && email.errors?.['email'] && email.touched" class="error-message">Email is invalid</p>
 
 

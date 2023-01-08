@@ -1,0 +1,24 @@
+<p>******************************************************************************************************</p>
+<form #myTemplateForm="ngForm" (ngSubmit)="submitForm(myTemplateForm)">
+    <label>FirstName : </label>
+    <!-- #name='ngModel'  id is required to add controls for form validation also ngModel directive must be use -->
+    <input type="text" name="firstName" #name="ngModel" required minlength="4" ngModel>
+    <span *ngIf="name.invalid && name.touched" style="color: red">Please enter first name</span>
+    <br>
+    <label>LastName : </label>
+    <input type="text" name="lastName" #lastName="ngModel" ngModel>
+    <br>
+    <label>Email : </label>
+    <!-- if we don't use < #mail='ngModel' .... ngModel  >   then in form we don't get email value in controls and we can't validate it. -->
+    <input type="text" name="email" #mail="ngModel" email ngModel required>
+    <span *ngIf="mail.invalid && mail.touched" style="color: red">Please enter correct email</span>
+    <br>
+    <label>PhoneNumber : </label>
+    <input type="text" name="phone" #phoneNumber="ngModel" pattern="[0-9]+$" required ngModel>
+    <span *ngIf="phoneNumber.invalid && phoneNumber.touched" style="color: red">Please enter correct phone number</span>
+    <br>
+    <button type="submit">Submit</button>
+</form>
+
+<!-- submit from outside of form is valid because it can access form values via form id => myTemplateForm-->
+<button (click)="submitForm(myTemplateForm)">Submit from outside</button>
