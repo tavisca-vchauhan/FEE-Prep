@@ -1,0 +1,10 @@
+<p>of works!</p>
+
+<div *ngIf="obsStudentDesc" >
+    <p> {{obsStudentDesc}}</p>
+</div>
+<div *ngFor="let studentName of obsStudentList">
+    <p> {{studentName}}</p>
+</div>
+
+<p> {{obsStudentObj | json}}</p>
