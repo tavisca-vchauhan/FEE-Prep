@@ -33,8 +33,9 @@
         </div>
         <h3> Email</h3>
         <label>*email :</label>
-        <input type="text" formControlName="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$">
-        <p *ngIf="email && email.errors?.['email'] && email.touched" class="error-message">Email is invalid</p>
+        <!-- <input type="text" formControlName="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"> -->
+        <input type="text" formControlName="email" email required>
+        <p *ngIf="email && email.invalid && email.touched" class="error-message">Email is invalid</p>
 
 
         <!-- for nested formGroup we need to add formGroupName-->

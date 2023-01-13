@@ -1,0 +1,8 @@
+<p>From-event!</p>
+
+<button #btn (click)="getData">Get data</button>
+
+<div *ngIf="eventData">
+    <p>{{eventData}}</p>
+    <p>Data receieved !</p>
+</div>
