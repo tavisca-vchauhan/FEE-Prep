@@ -4,7 +4,7 @@
 (decrement)="onDecrement()"
 (reset)="onReset()"
 ></app-counter-button>
-<div *ngIf="data" >
+<div *ngIf="data?.length" >
     <div *ngFor="let user of data">
         <p> {{user.firstName}}</p>
     </div>

@@ -1,9 +1,9 @@
 import { Action } from '@ngrx/store';
 
 export enum UserActionType {
-  GetUsers = 'Get Users list',
-  UserListSuccess = 'User List Success',
-  UserListFailure = 'User List Failure',
+  GetUsers = '[User] Get Users',
+  UserListSuccess = '[User] User List Success',
+  UserListFailure = '[User] User List Failure',
 }
 
 export class GetUsersList implements Action {

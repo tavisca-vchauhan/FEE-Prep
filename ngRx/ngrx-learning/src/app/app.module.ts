@@ -1,4 +1,4 @@
-import { NgModule, isDevMode } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +13,7 @@ import { reducers, metaReducers } from './store/reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './store/effects/user.effects';
+import { ProductEffects } from './store/effects/product.effects';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { UserEffects } from './store/effects/user.effects';
     HttpClientModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     true ? StoreDevtoolsModule.instrument() : [],
-    EffectsModule.forRoot([UserEffects]),
+    EffectsModule.forRoot([UserEffects, ProductEffects]),
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent],
