@@ -1,3 +1,5 @@
+export const user_state_name = 'usersState';
+
 export interface UserState {
   userList: Array<Object>;
   loading: boolean;
@@ -11,5 +13,3 @@ export const initialUserState: UserState = {
   loaded: false,
   error: null,
 };
-
-export const userStateFeatureKey = 'usersState';
