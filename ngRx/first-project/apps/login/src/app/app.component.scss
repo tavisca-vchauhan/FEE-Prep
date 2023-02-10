@@ -1,4 +1,4 @@
-.container {
+.login-form {
     font-size: 25px;
     text-align: center;
     padding: 25px;
@@ -7,7 +7,7 @@
     margin-right: auto;
     box-shadow: 1px 1px 8px 3px #e5e5e5;
     border-radius: 10px;
-    background-color: rgb(42, 74, 94);
+    background-color: #1f5c82
 }
 
 button {
@@ -30,5 +30,12 @@ input {
 }
 
 label {
-    color: rgb(241, 230, 19);
+    color: #fcfcfc
+}
+
+p {
+    color: #750000;
+    font-size: 14px;
+    margin-left: 70px;
+    margin-top: 0;
 }

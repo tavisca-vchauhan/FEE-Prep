@@ -1,15 +1,14 @@
-
-<div class="container">
-    <form [formGroup]="loginForm" class="login-form">
-        <h3>
-            <label>Username : </label>
-            <input type="text" placeholder="Please enter username"/>
-        </h3>
-        <h3>
-            <label>Password : </label>
-            <input type="password" placeholder="Password"/>
-        </h3>
-        <button type="submit" (click)="onLogin()">Login</button>
-    </form>
-</div>
+<form [formGroup]="loginForm" class="login-form" (ngSubmit)="onLogin()">
+    <h3>
+        <label>Username : </label>
+        <input type="text" placeholder="Enter username" formControlName="username" required>
+        <p *ngIf="!username.valid && username.touched">Username is required</p>
+    </h3>
+    <h3>
+        <label>Password : </label>
+        <input type="password" placeholder="Enter password" formControlName="password" required>
+        <p *ngIf="!password.valid && password.touched">Password is required</p>
+    </h3>
+    <button type="submit" >Login</button>
+</form>
 <router-outlet></router-outlet>
