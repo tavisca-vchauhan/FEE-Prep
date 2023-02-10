@@ -7,6 +7,7 @@ import * as userAction from '../../store/actions/user.actions';
 import * as fromUser from '../../store/selectors/user.selectors';
 import * as productAction from '../../store/actions/product.actions';
 import * as selectFromProduct from '../../store/selectors/products.selectors';
+import { Products } from 'src/app/interfaces/products.interface';
 
 @Component({
   selector: 'app-counter',
@@ -22,7 +23,7 @@ export class CounterComponent implements OnInit {
     private cd: ChangeDetectorRef
   ) {}
 
-  products: any;
+  products: Array<Products>;
 
   ngOnInit(): void {}
 
@@ -47,7 +48,7 @@ export class CounterComponent implements OnInit {
 
   onDecrement() {
     this.counter--;
-    this.store.dispatch(new userAction.GetUsersList()); // action dispatch
+    this.store.dispatch(userAction.GetUsersList()); // action dispatch
     this.store.dispatch(new productAction.GetProducts());
   }
 
