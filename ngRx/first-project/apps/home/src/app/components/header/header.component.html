@@ -1,7 +1,7 @@
 <div class="container">
-	<a routerLink="">Home</a>
+	<a routerLink="/">Home</a>
 	<a routerLink="users">Users</a>
 	<a routerLink="products">Products</a>
-	<a routerLink="login" class="login-logout">Login</a>
-	<a routerLink="login" class="login-logout">LogOut</a>
+	<a routerLink="login" class="login-logout" *ngIf="!isUserLoggedIn">Login</a>
+	<a class="login-logout" *ngIf="isUserLoggedIn" (click)="onLogOut()">LogOut</a>
 </div>

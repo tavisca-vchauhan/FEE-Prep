@@ -1,10 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { DataService } from '@shared/services';
+import { USERS_DATA_URL } from '@shared/constants';
+import { Store } from '@ngrx/store';
+import { AppState } from '@shared/store/state';
+import { userLoginStatus } from '@shared/store/selectors';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   title = 'home';
+  isUserLoggedIn = false;
+  data: any;
+
+  constructor(
+    private dataService: DataService,
+    private store: Store<AppState>,
+    private router: Router
+  ) {}
+
+  ngOnInit() {
+    this.store.select(userLoginStatus).subscribe((status) => {
+      this.isUserLoggedIn = status;
+      if (this.isUserLoggedIn) {
+        this.router.navigate(['/']);
+      } else {
+        this.router.navigate(['login']);
+      }
+    });
+    this.dataService.getData(USERS_DATA_URL).subscribe((data) => {});
+  }
 }
