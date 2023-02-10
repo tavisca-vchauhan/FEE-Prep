@@ -7,12 +7,12 @@ const routes: Routes = [
   {
     path: '.',
     component: HomeComponent,
-    canActivate: [AuthGuard],
   },
   {
     path: 'users',
     loadChildren: () =>
       import('../../../users/src/app/app.module').then((m) => m.UsersModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'products',
@@ -20,6 +20,7 @@ const routes: Routes = [
       import('../../../products/src/app/app.module').then(
         (m) => m.ProductsModule
       ),
+    canActivate: [AuthGuard],
   },
   {
     path: 'login',

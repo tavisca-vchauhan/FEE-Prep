@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Validators, FormBuilder } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppState } from '@shared/store/state';
 import { UserLoginSuccess } from '@shared/store/actions';
@@ -12,16 +11,27 @@ import { UserLoginSuccess } from '@shared/store/actions';
 })
 export class LoginComponent implements OnInit {
   title = 'login';
-  loginForm: FormGroup;
+  loginForm = this.fb.group({
+    username: ['', Validators.required],
+    password: ['', Validators.required],
+  });
 
-  constructor(private store: Store<AppState>, private router: Router) {
-    this.loginForm = new FormGroup({});
+  constructor(private store: Store<AppState>, private fb: FormBuilder) {}
+  ngOnInit() {}
+
+  get username() {
+    return this.loginForm.get('username');
   }
-  ngOnInit() {
-    this.loginForm.reset();
+
+  get password() {
+    return this.loginForm.get('password');
   }
 
   onLogin() {
-    this.store.dispatch(new UserLoginSuccess());
+    if (this.loginForm.valid) {
+      this.store.dispatch(new UserLoginSuccess());
+    } else {
+      this.loginForm.markAllAsTouched();
+    }
   }
 }
