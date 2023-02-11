@@ -1,0 +1,44 @@
+.userId-form {
+    font-size: 25px;
+    text-align: center;
+    padding: 25px;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 1px 1px 8px 3px #e5e5e5;
+    border-radius: 10px;
+    background-color: #1f5c82
+}
+
+button {
+    font-size: 25px;
+    text-align: center;
+    size: 40px;
+    color: #d8d8d8;
+    padding: 8px;
+    margin-top: 20px;
+    cursor: pointer;
+    background-color: #000000;
+    border: none;
+    border-radius: 10px;
+}
+
+input {
+    font-size: medium;
+    border-radius: 5px;
+    border: 1px solid #dedada;
+    padding: 15px;
+}
+
+label {
+    margin-right: 20px;
+    color: #fcfcfc
+}
+
+p {
+    color: #750000;
+    font-size: 20px;
+    font-weight: bolder;
+    margin-left: 190px;
+    margin-top: 0;
+}

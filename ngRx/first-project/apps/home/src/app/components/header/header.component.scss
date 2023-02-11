@@ -1,5 +1,6 @@
 
 .container {
+    position: fixed;
     margin-top: 21px;
 }
 
@@ -8,7 +9,7 @@ a {
     background-color: #2f2f2f;
     color: rgb(238, 231, 231);
     padding: 18px 27px;
-    box-shadow: 1px 5px 18px 3px #6e7baa;
+    box-shadow: 4px 5px 18px 3px #aeb1ba;
     border-radius: 8px;
     margin: 2px;
     border: none;
@@ -18,7 +19,8 @@ a {
 }
 
 .login-logout {
-    float: right;
+    position: fixed;
+    right: 0;
     margin-top: -18px;
     margin-right: 20px;
 }

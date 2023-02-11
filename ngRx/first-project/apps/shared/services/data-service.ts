@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 export class DataService {
   constructor() {}
 
-  getData(url: string): Observable<JSON> {
+  getData(url: string): Observable<any> {
     return new Observable((observer) => {
       fetch(url)
         .then((response) => response.json())
