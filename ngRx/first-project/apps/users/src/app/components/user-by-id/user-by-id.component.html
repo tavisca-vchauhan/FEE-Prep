@@ -1,0 +1,8 @@
+<div>
+    <form [formGroup]="userIdForm" (ngSubmit)="ShowDetails()" class="userId-form">
+      <label>Please enter User-ID</label>
+      <input type="text" formControlName="userId" required>
+      <p *ngIf="!userId.valid && userId.touched">User ID is required</p>
+      <button>Show Details</button>
+    </form>
+</div>

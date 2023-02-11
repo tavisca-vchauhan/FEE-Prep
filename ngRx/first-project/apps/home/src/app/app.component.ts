@@ -1,6 +1,4 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { DataService } from '@shared/services';
-import { USERS_DATA_URL } from '@shared/constants';
 import { Store } from '@ngrx/store';
 import { AppState } from '@shared/store/state';
 import { userLoginStatus } from '@shared/store/selectors';
@@ -16,11 +14,7 @@ export class HomeComponent implements OnInit {
   isUserLoggedIn = false;
   data: any;
 
-  constructor(
-    private dataService: DataService,
-    private store: Store<AppState>,
-    private router: Router
-  ) {}
+  constructor(private store: Store<AppState>, private router: Router) {}
 
   ngOnInit() {
     this.store.select(userLoginStatus).subscribe((status) => {
@@ -31,6 +25,5 @@ export class HomeComponent implements OnInit {
         this.router.navigate(['login']);
       }
     });
-    this.dataService.getData(USERS_DATA_URL).subscribe((data) => {});
   }
 }

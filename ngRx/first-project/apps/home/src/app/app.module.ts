@@ -7,6 +7,7 @@ import { reducers, metaReducers } from '@shared/store/reducers';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
+import { UserEffects } from '../../../users/src/app/store/effects/user.effects';
 
 @NgModule({
   declarations: [HomeComponent, HeaderComponent],
@@ -15,7 +16,7 @@ import { HeaderComponent } from './components/header/header.component';
     AppRoutingModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     true ? StoreDevtoolsModule.instrument() : [],
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([UserEffects]),
   ],
   providers: [],
   bootstrap: [HomeComponent],
