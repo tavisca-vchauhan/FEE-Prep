@@ -1,7 +1,11 @@
 <div class="container">
-	<a routerLink="/">Home</a>
-	<a routerLink="users">Users</a>
-	<a routerLink="products">Products</a>
+	<a class="back-button" (click)="goBack()" *ngIf="showBackButton">
+		<img [src]="BACK_LOGO" class="back-logo"/>
+		<p>Back</p>
+	</a>
+	<a routerLink="/" class="button">Home</a>
+	<a routerLink="users" class="button">Users</a>
+	<a routerLink="products" class="button">Products</a>
 	<a routerLink="login" class="login-logout" *ngIf="!isUserLoggedIn">Login</a>
 	<a class="login-logout" *ngIf="isUserLoggedIn" (click)="onLogOut()">LogOut</a>
 </div>

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from '../../interfaces/user';
 
 @Component({
@@ -7,9 +8,13 @@ import { User } from '../../interfaces/user';
   styleUrls: ['./user-card.component.scss'],
 })
 export class UserCardComponent implements OnInit {
-  constructor() {}
+  constructor(private router: Router) {}
 
   @Input() user: User = null;
 
   ngOnInit(): void {}
+
+  showDetails(id: number) {
+    this.router.navigate(['users/user-details', id]);
+  }
 }

@@ -10,5 +10,5 @@
       <h2>{{user?.firstName}} {{user?.lastName}}</h2>
       <p class="title">{{user?.company?.title}}</p>
       <p>{{user?.university}}</p>
-      <p><button>Show Details</button></p>
+      <p><button (click)="showDetails(user.id)">Show Details</button></p>
   </div>

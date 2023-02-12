@@ -6,7 +6,7 @@ export interface State {
   [fromState.APP_STATE_NAME]: fromState.AppState;
 }
 
-export const reducers: ActionReducerMap<State, any> = {
+export const appReducers: ActionReducerMap<State, any> = {
   [fromState.APP_STATE_NAME]: fromReducer.appReducer,
 };
 

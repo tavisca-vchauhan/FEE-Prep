@@ -1,24 +1,25 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 import { UserState, USER_STATE_NAME } from '../state/user.state';
 
-const userFeatureState = createFeatureSelector<UserState>(USER_STATE_NAME);
+const userFeatureState = createFeatureSelector<{ userState: UserState }>(
+  USER_STATE_NAME
+);
 
 export const getUserList = createSelector(
   userFeatureState,
-  (state) => state.users
+  (state) => state?.userState?.users
 );
 
 export const getUserListError = createSelector(
   userFeatureState,
-  (state) => state.error
+  (state) => state?.userState?.error
 );
 
 export const isUserListLoading = createSelector(
   userFeatureState,
-  (state) => state.loading
+  (state) => state?.userState?.loading
 );
 
-export const isUserListLoaded = createSelector(
-  userFeatureState,
-  (state) => state.loaded
-);
+export const isUserListLoaded = createSelector(userFeatureState, (state) => {
+  return state?.userState?.loaded;
+});

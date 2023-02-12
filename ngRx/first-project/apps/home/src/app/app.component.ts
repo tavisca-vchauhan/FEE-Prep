@@ -2,7 +2,6 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '@shared/store/state';
 import { userLoginStatus } from '@shared/store/selectors';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -14,16 +13,12 @@ export class HomeComponent implements OnInit {
   isUserLoggedIn = false;
   data: any;
 
-  constructor(private store: Store<AppState>, private router: Router) {}
+  constructor(private store: Store<AppState>, private cd: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.store.select(userLoginStatus).subscribe((status) => {
       this.isUserLoggedIn = status;
-      if (this.isUserLoggedIn) {
-        this.router.navigate(['/']);
-      } else {
-        this.router.navigate(['login']);
-      }
     });
+    this.cd.detectChanges();
   }
 }
