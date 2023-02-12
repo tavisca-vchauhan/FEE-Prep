@@ -1,4 +1,8 @@
-<div *ngFor="let user of userList; first as isFirst" class="container">
-<user-card [user]="user" class="child"></user-card>
+<div *ngIf="userList">
+    <div *ngFor="let user of userList; first as isFirst" class="container" >
+    <user-card [user]="user" class="child"></user-card>
+    </div>
 </div>
-
+<div *ngIf="!userList" class="loader">
+    <loader></loader>
+</div>

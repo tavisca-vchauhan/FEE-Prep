@@ -1,11 +1,11 @@
 
 .container {
     position: fixed;
-    margin-top: 21px;
+    display: flex;
 }
 
 
-a {
+a.button, a.login-logout {
     background-color: #2f2f2f;
     color: rgb(238, 231, 231);
     padding: 18px 27px;
@@ -17,10 +17,24 @@ a {
     cursor: pointer;
     text-decoration: none;
 }
+a.back-button {
+    display: flex;
+    color: #2f2f2f;
+    font-weight: bolder;
+    font-size: large;
+    cursor: pointer;
+    margin-right: 25px;
+}
 
 .login-logout {
     position: fixed;
     right: 0;
-    margin-top: -18px;
     margin-right: 20px;
+}
+
+.back-logo {
+    padding: 2px;
+    margin-top: 15px;
+    height: 25px;
+    width: 25px;
 }

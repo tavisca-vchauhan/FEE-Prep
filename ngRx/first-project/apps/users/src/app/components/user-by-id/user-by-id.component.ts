@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { GetUserList } from '../../store/actions';
 import { UserState } from '../../store/state';
 import { isUserListLoaded } from '../../store/selectors/user-selector';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'user-by-id',
@@ -11,7 +12,11 @@ import { isUserListLoaded } from '../../store/selectors/user-selector';
   styleUrls: ['./user-by-id.component.scss'],
 })
 export class UserByIdComponent implements OnInit {
-  constructor(private fb: FormBuilder, private store: Store<UserState>) {}
+  constructor(
+    private fb: FormBuilder,
+    private store: Store<UserState>,
+    private router: Router
+  ) {}
 
   userIdForm = this.fb.group({
     userId: ['', Validators.required],
@@ -25,10 +30,14 @@ export class UserByIdComponent implements OnInit {
 
   ShowDetails() {
     if (this.userIdForm.valid) {
-      this.store.select(isUserListLoaded).subscribe((isUserListLoaded) => {
-        if (!isUserListLoaded) {
+      this.store.select(isUserListLoaded).subscribe((userListLoaded) => {
+        if (!userListLoaded) {
           this.store.dispatch(new GetUserList());
         }
+        this.router.navigate([
+          'users/user-details',
+          this.userIdForm.value.userId,
+        ]);
       });
     } else {
       this.userIdForm.markAllAsTouched();

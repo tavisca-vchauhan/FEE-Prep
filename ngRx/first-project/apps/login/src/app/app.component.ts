@@ -3,6 +3,8 @@ import { Validators, FormBuilder } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppState } from '@shared/store/state';
 import { UserLoginSuccess } from '@shared/store/actions';
+import { userLoginStatus } from '@shared/store/selectors';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'login-root',
@@ -16,7 +18,11 @@ export class LoginComponent implements OnInit {
     password: ['', Validators.required],
   });
 
-  constructor(private store: Store<AppState>, private fb: FormBuilder) {}
+  constructor(
+    private store: Store<AppState>,
+    private fb: FormBuilder,
+    private router: Router
+  ) {}
   ngOnInit() {}
 
   get username() {
@@ -30,6 +36,13 @@ export class LoginComponent implements OnInit {
   onLogin() {
     if (this.loginForm.valid) {
       this.store.dispatch(new UserLoginSuccess());
+      this.store.select(userLoginStatus).subscribe((isUserLoggedIn) => {
+        if (isUserLoggedIn) {
+          this.router.navigate(['/']);
+        } else {
+          this.router.navigate(['login']);
+        }
+      });
     } else {
       this.loginForm.markAllAsTouched();
     }

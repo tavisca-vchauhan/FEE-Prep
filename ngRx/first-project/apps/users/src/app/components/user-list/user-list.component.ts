@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../interfaces';
-import { DataService } from '@shared/services';
-import { USERS_DATA_URL } from '@shared/constants';
+import { Store } from '@ngrx/store';
+import { UserState } from '../../store/state';
+import { getUserList } from '../../store/selectors/user-selector';
 
 @Component({
   selector: 'user-list',
@@ -9,13 +10,11 @@ import { USERS_DATA_URL } from '@shared/constants';
   styleUrls: ['./user-list.component.scss'],
 })
 export class UserListComponent implements OnInit {
-  constructor(private dataService: DataService) {}
+  constructor(private store: Store<UserState>) {}
 
-  userList: User[];
+  userList: User[] = null;
 
   ngOnInit(): void {
-    this.dataService
-      .getData(USERS_DATA_URL)
-      .subscribe((users) => (this.userList = users));
+    this.store.select(getUserList).subscribe((user) => (this.userList = user));
   }
 }

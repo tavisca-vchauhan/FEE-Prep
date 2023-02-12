@@ -21,8 +21,12 @@
     "@ngrx/effects": "^15.2.1",
     "@ngrx/store": "^15.2.1",
     "@ngrx/store-devtools": "^15.2.1",
+    "css-loader": "^6.7.3",
+    "file-loader": "^6.2.0",
     "rxjs": "~7.5.0",
+    "style-loader": "^3.3.1",
     "tslib": "^2.3.0",
+    "url-loader": "^4.1.1",
     "zone.js": "~0.12.0"
   },
   "devDependencies": {
