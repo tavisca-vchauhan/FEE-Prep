@@ -1,18 +1,32 @@
+.list-container {
+    text-align: center;
+}
+
 .container {
     display: inline-block;
-    width: 300px;
+    width: 40%;
     height: 300px;
-    max-width: 300px;
-    max-height: 300px;
     margin-bottom: 30px;
 }
 
 .child {
     margin-right: 25px;
-    display: block;
 }
 
 .loader {
     margin-top: 20%;
     margin-left: 40%;
+}
+
+.load-more {
+    margin: auto;
+    text-align: center;
+    display: flex;
+    padding: 18px 27px;
+    box-shadow: 1px 1px 10px 1px #aeb1ba;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
 }

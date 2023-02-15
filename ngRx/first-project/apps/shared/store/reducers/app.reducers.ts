@@ -5,38 +5,33 @@ export function appReducer(
   state = initialAppState,
   action: AppActions
 ): AppState {
+  state = JSON.parse(localStorage.getItem('state'));
   switch (action.type) {
     case AppActionsType.USER_LOGIN:
-      return {
+      state = {
         ...state,
       };
+      break;
     case AppActionsType.USER_LOGIN_SUCCESS:
-      return {
+      state = {
         ...state,
         isUserLoggedIn: true,
+        userAuthToken: action.payload.userToken,
       };
+      break;
     case AppActionsType.USER_LOGIN_FAIL:
-      return {
+      state = {
         ...state,
         isUserLoggedIn: false,
         error: action.payload.error,
       };
+      break;
     case AppActionsType.USER_LOGOUT:
-      return {
-        ...state,
-      };
-    case AppActionsType.USER_LOGOUT_SUCCESS:
-      return {
-        ...state,
-        isUserLoggedIn: false,
-      };
-    case AppActionsType.USER_LOGOUT_FAIL:
-      return {
-        ...state,
-        isUserLoggedIn: true,
-        error: action.payload.error,
-      };
+      state = initialAppState;
+      break;
     default:
-      return { ...state };
+      state = { ...state };
   }
+  localStorage.setItem('state', JSON.stringify(state));
+  return state;
 }

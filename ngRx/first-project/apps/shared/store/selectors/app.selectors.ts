@@ -12,3 +12,8 @@ export const userLogoutFailure = createSelector(
   appFeatureState,
   (state) => state.error
 );
+
+export const getUserToken = createSelector(
+  appFeatureState,
+  (state) => state.userAuthToken
+);

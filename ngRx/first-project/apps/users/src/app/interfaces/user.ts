@@ -1,4 +1,4 @@
-export interface User {
+export interface UserJsonDummyData {
   id: number;
   firstName: string;
   lastName: string;
@@ -49,4 +49,23 @@ export interface User {
   ein: string;
   ssn: string;
   userAgent: string;
+}
+
+export interface User {
+  id: number;
+  email: string;
+  phone: string;
+  username: string;
+  password: string;
+  address: {
+    geolocation: { lat: number; lng: number };
+    city: string;
+    street: string;
+    zipcode: string;
+    number: number;
+  };
+  name: {
+    firstname: string;
+    lastname: string;
+  };
 }

@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Location } from '@angular/common';
-import { AppState } from '@shared/store/state';
-import { UserLogoutSuccess } from '@shared/store/actions';
 import { NavigationStart, Router } from '@angular/router';
+import { AppState } from '@shared/store/state';
+import { UserLogout } from '@shared/store/actions';
 
 @Component({
   selector: 'app-header',
@@ -36,7 +36,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {}
 
   onLogOut() {
-    this.store.dispatch(new UserLogoutSuccess());
+    this.store.dispatch(new UserLogout());
+    localStorage.clear();
+    this.router.navigate(['login']);
   }
 
   goBack() {

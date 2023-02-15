@@ -3,6 +3,7 @@ import { User } from '../../interfaces/user';
 
 export enum UserActionsType {
   GET_USER_LIST = '[USER_LIST] Get User List',
+  NEXT_PAGE = '[USER_PAGE] Next Page Data',
   GET_USER_LIST_SUCCESS = '[USER_LIST] Get User List Success',
   GET_USER_LIST_FAILURE = '[USER_LIST] Get User List Failure',
   GET_USER_DETAIL = '[USER_DETAIL] Get User Detail',
@@ -19,9 +20,17 @@ export class GetUserListSuccess implements Action {
   constructor(public payload: { usersList: User[] }) {}
 }
 
+export class NextPage implements Action {
+  readonly type = UserActionsType.NEXT_PAGE;
+}
+
 export class GetUserListFailure implements Action {
   readonly type = UserActionsType.GET_USER_LIST_FAILURE;
   constructor(public payload: { error: any }) {}
 }
 
-export type UserActions = GetUserList | GetUserListFailure | GetUserListSuccess;
+export type UserActions =
+  | GetUserList
+  | GetUserListFailure
+  | GetUserListSuccess
+  | NextPage;

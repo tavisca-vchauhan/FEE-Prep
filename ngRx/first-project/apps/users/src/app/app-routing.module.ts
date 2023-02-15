@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from '@shared/services';
 import { UserComponent } from './app.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { UserByIdComponent } from './components/user-by-id/user-by-id.component';

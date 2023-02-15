@@ -12,6 +12,8 @@ export class UserCardComponent implements OnInit {
 
   @Input() user: User = null;
 
+  DUMMY_PROFILE_IMAGE = '../../../assets/images/profile-img.jpg';
+
   ngOnInit(): void {}
 
   showDetails(id: number) {

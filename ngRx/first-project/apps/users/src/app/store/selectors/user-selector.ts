@@ -23,3 +23,8 @@ export const isUserListLoading = createSelector(
 export const isUserListLoaded = createSelector(userFeatureState, (state) => {
   return state?.userState?.loaded;
 });
+
+export const nextPage = createSelector(
+  userFeatureState,
+  (state) => state?.userState?.page
+);

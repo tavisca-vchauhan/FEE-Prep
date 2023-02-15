@@ -30,15 +30,10 @@ export class UserByIdComponent implements OnInit {
 
   ShowDetails() {
     if (this.userIdForm.valid) {
-      this.store.select(isUserListLoaded).subscribe((userListLoaded) => {
-        if (!userListLoaded) {
-          this.store.dispatch(new GetUserList());
-        }
-        this.router.navigate([
-          'users/user-details',
-          this.userIdForm.value.userId,
-        ]);
-      });
+      this.router.navigate([
+        'users/user-details',
+        this.userIdForm.value.userId,
+      ]);
     } else {
       this.userIdForm.markAllAsTouched();
     }
