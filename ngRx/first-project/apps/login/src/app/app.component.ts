@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormBuilder } from '@angular/forms';
+import { Validators, FormBuilder, FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { Router } from '@angular/router';
 import { AppState } from '@shared/store/state';
 import { UserLoginSuccess } from '@shared/store/actions';
 import { userLoginStatus } from '@shared/store/selectors';
-import { Router } from '@angular/router';
+import { AuthService } from './services/auth-service/auth.service';
+import { Credentials } from './interfaces/credentials.interface';
 
 @Component({
   selector: 'login-root',
@@ -18,10 +20,14 @@ export class LoginComponent implements OnInit {
     password: ['', Validators.required],
   });
 
+  cred: Credentials;
+  errorMessage: string;
+
   constructor(
     private store: Store<AppState>,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
   ngOnInit() {}
 
@@ -35,7 +41,18 @@ export class LoginComponent implements OnInit {
 
   onLogin() {
     if (this.loginForm.valid) {
-      this.store.dispatch(new UserLoginSuccess());
+      this.cred = {
+        username: this.loginForm.controls.username.value,
+        password: this.loginForm.controls.password.value,
+      };
+
+      this.authService.login(this.cred).subscribe((data) => {
+        if (data.token) {
+          this.store.dispatch(new UserLoginSuccess({ userToken: data.token }));
+        } else {
+          this.errorMessage = data.message;
+        }
+      });
       this.store.select(userLoginStatus).subscribe((isUserLoggedIn) => {
         if (isUserLoggedIn) {
           this.router.navigate(['/']);

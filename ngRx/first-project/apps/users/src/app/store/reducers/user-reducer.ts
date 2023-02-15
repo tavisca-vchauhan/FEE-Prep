@@ -1,5 +1,5 @@
 import { UserActionsType, UserActions } from '../actions/user-actions';
-import { UserState } from '../state/user.state';
+import { UserState, initialUserState } from '../state/user.state';
 
 export const reducer = (state: UserState, action: UserActions) => {
   switch (action.type) {
@@ -7,6 +7,7 @@ export const reducer = (state: UserState, action: UserActions) => {
       return {
         ...state,
         loading: true,
+        loaded: false,
       };
     case UserActionsType.GET_USER_LIST_SUCCESS:
       return {
@@ -22,11 +23,21 @@ export const reducer = (state: UserState, action: UserActions) => {
         loading: false,
         loaded: false,
       };
+    case UserActionsType.NEXT_PAGE:
+      return {
+        ...state,
+        page: state.page + 1,
+        loading: true,
+        loaded: false,
+      };
     default:
       return { ...state };
   }
 };
 
-export function userReducer(state: UserState, action: UserActions) {
+export function userReducer(
+  state: UserState = initialUserState,
+  action: UserActions
+) {
   return reducer(state, action);
 }

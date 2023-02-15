@@ -1,1 +1,1 @@
-export * from '../constants/constant';
+export * from './api-endPoints';
