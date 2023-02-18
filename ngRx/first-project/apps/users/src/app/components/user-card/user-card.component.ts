@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../../interfaces/user';
+import { DUMMY_PROFILE_IMAGE_SRC } from '../../constants/constant';
 
 @Component({
   selector: 'user-card',
@@ -12,7 +13,7 @@ export class UserCardComponent implements OnInit {
 
   @Input() user: User = null;
 
-  DUMMY_PROFILE_IMAGE = '../../../assets/images/profile-img.jpg';
+  DUMMY_PROFILE_IMAGE = DUMMY_PROFILE_IMAGE_SRC;
 
   ngOnInit(): void {}
 

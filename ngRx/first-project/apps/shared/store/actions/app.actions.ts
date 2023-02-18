@@ -1,4 +1,5 @@
 import { Action } from '@ngrx/store';
+import { Credentials } from '../../../login/src/app/interfaces/credentials.interface';
 
 export enum AppActionsType {
   USER_LOGIN = '[LOGIN] User Login',
@@ -12,6 +13,7 @@ export enum AppActionsType {
 
 export class UserLogin implements Action {
   readonly type = AppActionsType.USER_LOGIN;
+  constructor(public cred: Credentials) {}
 }
 
 export class UserLoginSuccess implements Action {

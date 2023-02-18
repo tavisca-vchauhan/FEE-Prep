@@ -6,6 +6,7 @@ import { UserState } from '../../store/state';
 import { getUserList, getUserListError } from '../../store/selectors';
 import { GetUserList } from '../../store/actions';
 import { isUserListLoaded } from '../../store/selectors/user-selector';
+import { DUMMY_PROFILE_IMAGE_SRC } from '../../constants/constant';
 
 @Component({
   selector: 'show-details',
@@ -27,7 +28,7 @@ export class ShowDetailsComponent implements OnInit {
   users: User[];
   error: any;
 
-  DUMMY_PROFILE_IMAGE = '../../../assets/images/profile-img.jpg';
+  DUMMY_PROFILE_IMAGE = DUMMY_PROFILE_IMAGE_SRC;
 
   ngOnInit() {
     this.store.select(isUserListLoaded).subscribe((userListLoaded) => {
