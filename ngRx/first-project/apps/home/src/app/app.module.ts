@@ -4,6 +4,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { appReducers, metaReducers } from '@shared/store/reducers';
+import { AuthEffects } from '@shared/store/effects/auth.effects';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -15,7 +16,7 @@ import { HeaderComponent } from './components/header/header.component';
     AppRoutingModule,
     StoreModule.forRoot(appReducers, { metaReducers }),
     true ? StoreDevtoolsModule.instrument() : [],
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([AuthEffects]),
   ],
   providers: [],
   bootstrap: [HomeComponent],

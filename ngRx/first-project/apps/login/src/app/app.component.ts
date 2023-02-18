@@ -3,9 +3,8 @@ import { Validators, FormBuilder, FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { AppState } from '@shared/store/state';
-import { UserLoginSuccess } from '@shared/store/actions';
+import { UserLogin } from '@shared/store/actions';
 import { userLoginStatus } from '@shared/store/selectors';
-import { AuthService } from './services/auth-service/auth.service';
 import { Credentials } from './interfaces/credentials.interface';
 
 @Component({
@@ -26,8 +25,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private store: Store<AppState>,
     private fb: FormBuilder,
-    private router: Router,
-    private authService: AuthService
+    private router: Router
   ) {}
   ngOnInit() {}
 
@@ -46,13 +44,8 @@ export class LoginComponent implements OnInit {
         password: this.loginForm.controls.password.value,
       };
 
-      this.authService.login(this.cred).subscribe((data) => {
-        if (data.token) {
-          this.store.dispatch(new UserLoginSuccess({ userToken: data.token }));
-        } else {
-          this.errorMessage = data.message;
-        }
-      });
+      this.store.dispatch(new UserLogin(this.cred));
+
       this.store.select(userLoginStatus).subscribe((isUserLoggedIn) => {
         if (isUserLoggedIn) {
           this.router.navigate(['/']);

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { CurrentUser } from '../../../../../../apps/shared/interfaces';
 import { Observable } from 'rxjs';
-import { Credentials } from '../../interfaces';
 import { LOGIN_API_POINT } from '@shared/constants';
+import { CurrentUser } from '../../../../../../apps/shared/interfaces';
+import { Credentials } from '../../interfaces';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
