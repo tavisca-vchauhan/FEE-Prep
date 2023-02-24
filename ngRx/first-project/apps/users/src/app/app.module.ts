@@ -5,7 +5,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { LoaderComponent } from '@shared/components';
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { UserByIdComponent } from './components/user-by-id/user-by-id.component';
@@ -15,6 +14,7 @@ import { USER_STATE_NAME } from './store/state';
 import { UserEffects } from './store/effects/user.effects';
 import { ShowDetailsComponent } from './components/show-details/show-details.component';
 import { reducer } from './store/reducers/index';
+import { SharedModule } from '../../../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -23,10 +23,10 @@ import { reducer } from './store/reducers/index';
     UserListComponent,
     UserByIdComponent,
     ShowDetailsComponent,
-    LoaderComponent,
   ],
   imports: [
     CommonModule,
+    SharedModule,
     AppRoutingModule,
     ReactiveFormsModule,
     RouterModule,

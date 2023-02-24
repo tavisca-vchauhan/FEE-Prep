@@ -8,11 +8,13 @@ import { AuthEffects } from '@shared/store/effects/auth.effects';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
+import { SharedModule } from '../../../shared/shared.module';
 
 @NgModule({
   declarations: [HomeComponent, HeaderComponent],
   imports: [
     BrowserModule,
+    SharedModule,
     AppRoutingModule,
     StoreModule.forRoot(appReducers, { metaReducers }),
     true ? StoreDevtoolsModule.instrument() : [],
