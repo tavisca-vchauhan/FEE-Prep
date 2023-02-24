@@ -6,5 +6,10 @@ export const USERS_DATA_API_POINT =
 
 // export const USERS_DATA_API_POINT = 'https://dummyjson.com/users?limit=COUNT';
 
+/* Authentication token required for this request */
+
+// export const PRODUCTS_DATA_API_POINT =
+//   'https://dummyjson.com/auth/products?limit=COUNT';
+
 export const PRODUCTS_DATA_API_POINT =
-  'https://dummyjson.com/auth/products?limit=COUNT';
+  'https://dummyjson.com/products?limit=COUNT';

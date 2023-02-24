@@ -1,0 +1,11 @@
+<div class="item" *ngIf="product">
+    <div class="img-box">
+        <img [src]="product.thumbnail" alt="product.description">
+    </div>
+    <div class="details">
+        <h2>{{product.title}}<br><span>{{product.brand}}</span></h2>
+        <div class="price">${{product.price}}</div>
+        <label>{{product.description}}</label>
+        <a (click)="onAddToCart()">Add to cart</a>
+    </div>
+</div>

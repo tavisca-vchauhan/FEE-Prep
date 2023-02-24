@@ -18,7 +18,7 @@ export class DataService {
       fetch(url, {
         method: 'GET' /* or POST/PUT/PATCH/DELETE */,
         headers: {
-          Authorization: `Bearer ${this.userToken}`,
+          // Authorization: `Bearer ${this.userToken}`,
           'Content-Type': 'application/json',
         },
       })
