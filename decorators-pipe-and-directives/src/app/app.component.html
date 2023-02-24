@@ -1,0 +1,49 @@
+<!-- <script>
+  $(document).keydown(function (event) {
+      if (event.which == "17") {
+        cntrlIsPressed = true;
+        console.log(cntrlIsPressed);
+      }
+      else if (event.which == 65 && cntrlIsPressed) {
+        // Cntrl+  A
+        console.log(cntrlIsPressed);
+      }
+    });
+</script>
+<h1  [ngClass]="isRed ? 'red' : 'green'"> Current time is : {{text}}</h1>
+<h2 [style.color]="testColor"> testing code...</h2>
+<input type="button" value="red" (click)="changeColor('red')">
+<input type="button" value="green" (click)="changeColor('green')"> -->
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="">
+</head>
+
+<body>
+  <h1 [ngClass]="isRed ? 'red' : 'green'"> Current time is : {{text}}</h1>
+  <h2 [style.color]="testColor"> testing code...</h2>
+  <input type="button" value="red" (click)="changeColor($event)">
+  <input type="button" value="green" (click)="changeColor($event)">
+
+  <input type="text" (keyup)="getText($event)" />
+  <!-- <input type="text" keypress="getText($event)" /> -->
+  <h2 [applyColor]="attributeColor"> Content is {{inputText}}</h2> <!-- Attribute directive-->
+  <h2 *myNgIf="false else true"> Content from myNgIf</h2> <!-- Structural directive-->
+  <h3>Content from myNgFor : <h2 *myNgFor="let obj of objectArray"> {{obj.age}}</h2> </h3> <!-- Structural directive-->
+
+
+  <h1>Custom pipes : </h1>
+  <h3>Square pipe - </h3> <p>square of 5 is - {{5 | square}}</p>
+  <h3>Power pipe - </h3> <p>Power of 8^3 is - {{8 | power:3}}</p>
+</body>
+
+</html>
