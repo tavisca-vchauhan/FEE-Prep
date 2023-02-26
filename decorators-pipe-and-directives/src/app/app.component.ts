@@ -6,6 +6,11 @@ import { Component, HostListener } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  switchCases = {
+    HI: 'hi',
+    BYEE: 'bye',
+    TATA: 'tata',
+  };
   isRed = true;
   testColor = '';
   attributeColor = 'yellow';
