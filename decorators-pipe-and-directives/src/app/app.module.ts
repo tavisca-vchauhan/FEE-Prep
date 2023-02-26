@@ -8,6 +8,12 @@ import { MyNgIfDirective } from './directives/myNgIf.directive';
 import { MyNgForDirective } from './directives/myNgFor.directive';
 import { SquarePipe } from './pipes/square.pipe';
 import { PowerPipe } from './pipes/power.pipe';
+import {
+  MyNgSwitchDirective,
+  MyNgSwitchCaseDirective,
+  MyNgSwitchCaseDefaultDirective,
+} from './directives/myNgSwitch.directive';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -17,8 +23,11 @@ import { PowerPipe } from './pipes/power.pipe';
     MyNgForDirective,
     SquarePipe,
     PowerPipe,
+    MyNgSwitchDirective,
+    MyNgSwitchCaseDirective,
+    MyNgSwitchCaseDefaultDirective,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, CommonModule],
   providers: [],
   bootstrap: [AppComponent],
 })

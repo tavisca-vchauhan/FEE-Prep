@@ -20,9 +20,11 @@ export class MyNgForDirective implements OnInit {
 
   ngOnInit() {
     if (this.myNgForOf.length)
-      this.myNgForOf.forEach((obj: any) => {
+      this.myNgForOf.forEach((obj: any, index: any) => {
         this.view.createEmbeddedView(this.template, {
           $implicit: obj,
+          index: index,
+          isFirst: index == 0,
         });
       });
   }

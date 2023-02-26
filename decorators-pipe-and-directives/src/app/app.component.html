@@ -38,12 +38,23 @@
   <!-- <input type="text" keypress="getText($event)" /> -->
   <h2 [applyColor]="attributeColor"> Content is {{inputText}}</h2> <!-- Attribute directive-->
   <h2 *myNgIf="false else true"> Content from myNgIf</h2> <!-- Structural directive-->
-  <h3>Content from myNgFor : <h2 *myNgFor="let obj of objectArray"> {{obj.age}}</h2> </h3> <!-- Structural directive-->
+  <h3 >Content from myNgFor : <h2 *myNgFor="let obj of objectArray; index as index; isFirst as isFirst"> {{obj.age}}, {{index}}, {{isFirst}}</h2> </h3> <!-- Structural directive-->
 
 
   <h1>Custom pipes : </h1>
   <h3>Square pipe - </h3> <p>square of 5 is - {{5 | square}}</p>
   <h3>Power pipe - </h3> <p>Power of 8^3 is - {{8 | power:3}}</p>
+  
+  <h2> MyNgSwitch - </h2>
+  <div [myNgSwitch]="inputText">
+    <h3 *myNgSwitchCase="switchCases.HI">0</h3>
+    <h3 *myNgSwitchCase="switchCases.BYEE">1</h3>
+    <h3 *myNgSwitchCase="switchCases.TATA">2</h3>
+    <h3 *myNgSwitchCase="3">3</h3>
+    <h3 *myNgSwitchCase="4">4</h3>
+    <h3 *myNgSwitchCaseDefault="5">5</h3>
+  </div>
+
 </body>
 
 </html>
