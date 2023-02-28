@@ -14,6 +14,8 @@ import {
   MyNgSwitchCaseDefaultDirective,
 } from './directives/myNgSwitch.directive';
 import { CommonModule } from '@angular/common';
+import { CustomClass } from './decorators/class.decorator';
+import { CustomMethod } from './decorators/method.decorator';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { CommonModule } from '@angular/common';
     MyNgSwitchDirective,
     MyNgSwitchCaseDirective,
     MyNgSwitchCaseDefaultDirective,
+    CustomClass,
+    CustomMethod,
   ],
   imports: [BrowserModule, AppRoutingModule, CommonModule],
   providers: [],
