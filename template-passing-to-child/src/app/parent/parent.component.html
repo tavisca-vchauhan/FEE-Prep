@@ -1,0 +1,52 @@
+<ng-template #temp let-data="data">
+  <div class="card-container">
+    <div class="card" *ngFor="let item of data">
+      {{ item }}
+    </div>
+  </div>
+</ng-template>
+
+<h4>
+  Method 1: Passing the template to the ChildA Component using @Input() Property
+  Binding -
+</h4>
+
+<app-child-a [temp]="temp"> </app-child-a>
+
+
+
+<!-- 
+/////    Second method ->  
+-->
+
+<h4>
+    Method 2: Passing the template to the ChildB Component using Content
+    Projection and ng-template
+</h4>
+
+<app-child-b>
+    <ng-template #temp2 let-data="data">
+        <p>
+            Accessing template containing data in <b>bold</b> using ngTemplateOutlet -- 
+            <br>
+            <b>{{ data }}</b>
+        </p>
+    </ng-template>
+</app-child-b>
+
+<!-- 
+/////    Third method ->  
+-->
+
+<h4>
+    Method 3: Passing the template to the ChildC Component using Content
+    Projection and ng-content
+</h4>
+
+<app-child-c>
+    <h4>Its a header</h4>
+    <button>Its a button</button>
+    <h1 input>Content1!</h1>
+    <h2 form-field>Content2!</h2>
+    <h3 input form-field>Content1 & Content2!</h3>
+</app-child-c>
